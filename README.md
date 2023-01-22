@@ -51,11 +51,11 @@ In development. Currently it has the public key of a user hardcoded and mints to
 
 I spent half of the time of the assigment working on the CLI. Encoding and decoding; and getting UI and Node agree are not trivial tasks.
 
-Making the CLI recieve decimal numbers and text is the main part of the work develped until now.
+Making the CLI recieve decimal numbers and text is the main part of the work developed until now.
 
-I would like the Teachers to check encodind and decoding part in specific.
+I would like the Instructors to check encodind and decoding part in specific.
 
-I think that this CLI is simple enough to make visible the important part of the interaction between user client and the RPC node. So, with some improvement can be used as pedagogical tool.
+I think that this CLI is simple enough to make visible the important parts of the interaction between user client and the RPC node. So, with some improvement can be used as pedagogical tool.
 
 ## Futher development
 
