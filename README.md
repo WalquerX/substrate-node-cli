@@ -9,7 +9,7 @@ cargo build
 ```
 ### NodeInfo:
 
-This command covers all rpc call that not requires argumentos. Pass the name of the method as method flag. for example
+This command covers all rpc call that not requires arguments. Pass the name of the method to select them. for example:
 ```bash
 ./target/debug/node-cli node-info --method rpc_methods
 
@@ -22,7 +22,7 @@ This command covers all rpc call that not requires argumentos. Pass the name of 
 ./target/debug/node-cli node-info --method system_peers
 ```
 
-### Setting adn Reading Value
+### Setting and Reading Value
 
 This command sets and reads an u128 number as a way of testing. The storage key is hardcoded. To be able to call the SetValue(u128) call. For example:
 ```bash
