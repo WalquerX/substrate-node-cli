@@ -1,30 +1,10 @@
-/* A Marco Polo game. */
-
-/* Accepts a string with a name.
-If the name is "Marco", returns "Polo".
-If the name is "any other value", it returns "Marco".
-*/
-
 use websocket::{ClientBuilder, Message};
 use sp_core::hexdisplay::HexDisplay;
-
 use parity_scale_codec::{Decode, Encode};
-
 use sp_runtime::traits::Extrinsic;
-
-use hex::decode;
-
 use websocket_base::message::OwnedMessage;
-
-
-//use sp_core::sr25519::Pair;
-
-//use sp_std::prelude::*;
 use sp_application_crypto::Pair;
-//use sp_block_builder::runtime_decl_for_BlockBuilder::BlockBuilderV6;
 
-
-//[cfg_attr(feature = "std", derive(Serialize, Deserialize, parity_util_mem::MallocSizeOf))]
 #[derive(Debug, Encode, Decode, PartialEq, Eq, Clone)]
 pub struct BasicExtrinsic {
 	call: crate::Call,
@@ -41,13 +21,12 @@ pub struct SignaturePayload {
 #[cfg(feature = "std")]
 use serde::{Deserialize, Serialize};
 
-//#[cfg(test)]
 impl BasicExtrinsic {
 	fn new_unsigned(call: Call) -> Self {
 		<Self as Extrinsic>::new(call, None).unwrap()
 	}
 
-	fn new_signed(call: Call, payload: Option<SignaturePayload>) -> Self {
+	fn _new_signed(call: Call, payload: Option<SignaturePayload>) -> Self {
 		<Self as Extrinsic>::new(call, payload).unwrap()
 	}
 }
@@ -74,10 +53,6 @@ pub enum Call {
 	Upgrade(Vec<u8>),
 }
 
-
-
-
-
 pub fn marco_polo(name: &str) -> String {
     if name == "Marco" {
         "Polo".to_string()
@@ -102,21 +77,19 @@ pub fn call_rpc(message: String) -> String {
 
     match response {
         OwnedMessage::Text(t) => return t,
-        /// A message containing binary data
-        OwnedMessage::Binary(t) => return "is bin".to_string(),
-        /// A message which indicates closure of the WebSocket connection.
-        /// This message may or may not contain data.
-        OwnedMessage::Close(t)  => return "close data".to_string(),
-        /// A ping message - should be responded to with a pong message.
-        /// Usually the pong message will be sent with the same data as the
-        /// received ping message.
-        OwnedMessage::Ping(t)  => return "ping".to_string(),
-        /// A pong message, sent in response to a Ping message, usually
-        /// containing the same data as the received ping message.
-        OwnedMessage::Pong(t)  => return "pong".to_string(),
+        // A message containing binary data
+        OwnedMessage::Binary(_t) => return "is bin".to_string(),
+        // A message which indicates closure of the WebSocket connection.
+        // This message may or may not contain data.
+        OwnedMessage::Close(_t)  => return "close data".to_string(),
+        // A ping message - should be responded to with a pong message.
+        // Usually the pong message will be sent with the same data as the
+        // received ping message.
+        OwnedMessage::Ping(_t)  => return "ping".to_string(),
+        // A pong message, sent in response to a Ping message, usually
+        // containing the same data as the received ping message.
+        OwnedMessage::Pong(_t)  => return "pong".to_string(),
     };
-
-    "end".to_string()
 }
 
 
@@ -127,8 +100,6 @@ pub fn node_info(method: &str) -> String {
     call_rpc(str);
     "end".to_string()
 }
-
-
 
 pub fn set_value(value: u128) -> String {
 
@@ -151,8 +122,7 @@ pub fn set_value(value: u128) -> String {
     response
 }
 
-const VALUE_KEY: &[u8] = b"VALUE_KEY"; 
-const SYSTEM_KEY: &[u8] = b"SYSTEM_KEY";
+//const SYSTEM_KEY: &[u8] = b"SYSTEM_KEY";
 
 pub fn from_text_to_key(text: String) -> String {
     //let binding = HexDisplay::from(&VALUE_KEY);

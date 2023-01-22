@@ -1,18 +1,5 @@
-//A command-line tool to play Marco Polo
 use clap::Parser;
 
-use std::io::{self, Write};
-use std::net::TcpStream;
-use websocket::message::Type;
-use websocket::sync::Client;
-use websocket::ws::dataframe::DataFrame;
-use websocket::{ClientBuilder, Message};
-use parity_scale_codec_derive::{Decode, Encode};
-
-use serde_json::{Result, Value};
-
-use std::i64;
-use sp_application_crypto::Pair;
 #[derive(Parser)]
 #[clap(version = "1.0", author = "WalquerX", about = "A cli to submit extrinsics to substrate node")]
 struct Cli {
