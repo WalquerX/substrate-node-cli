@@ -96,9 +96,9 @@ pub fn call_rpc(message: String) -> String {
 pub fn node_info(method: &str) -> String {
 
     let str = "{\"jsonrpc\":\"2.0\", \"id\":1, \"method\":\"".to_owned() + method + "\"}";
-    println!("{}", &str);
-    call_rpc(str);
-    "end".to_string()
+    //println!("{}", &str);
+    let response = call_rpc(str);
+    response
 }
 
 pub fn set_value(value: u128) -> String {

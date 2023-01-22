@@ -45,7 +45,7 @@ fn main() {
         }
         Some(Commands::NodeInfo { method }) => {
             let result = node_cli::node_info(&method);
-            println!("{:?}", result);
+            println!("{}", result);
         }
         Some(Commands::SettingValue { number }) => {
             let result = node_cli::set_value(number);
