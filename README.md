@@ -39,12 +39,14 @@ Command to ask for the balance or u128 number stored in a text key the user prov
 ./target/debug/node-cli read-state-balance --text-key VALUE_KEY
 ```
 
-### Mint
+### SubmitExtrinsic
 
-In development. Currently it has the public key of a user hardcoded and mints tokens to that account.
+So to have a way to test having already encoded the Extrinsic. Example
 
 ```bash
-./target/debug/node-cli mint
+./target/debug/node-cli submit-extrinsic --ext 0x01b07b6b6eabdecd7e0ab24a33b6cfb340dae3a9ba6e4516fc740a99c6355167116400000000000000000000000000000001b07b6b6eabdecd7e0ab24a33b6cfb340dae3a9ba6e4516fc740a99c6355167110ee68426eba98daf629b059545430657d555c45884167bd22832740915ead158c4684224a7dd7ad6b1be324c6ff1915402477a6c6e00a3d208955d678832c584
+
+./target/debug/node-cli submit-extrinsic --ext 0x017c50a7a8412bc0cc4658c65d5ba4a231dd876cedc5fb26c3aa2383b065bdb4676400000000000000000000000000000000
 ```
 
 ## COMMENTS ABOUT THE ASSIGMENT
@@ -53,7 +55,7 @@ I spent half of the time of the assigment working on the CLI. Encoding and decod
 
 Making the CLI recieve decimal numbers and text is the main part of the work developed until now.
 
-I would like the Instructors to check encodind and decoding part in specific.
+I would like the Instructors to check encoding and decoding part in specific.
 
 I think that this CLI is simple enough to make visible the important parts of the interaction between user client and the RPC node. So, with some improvement can be used as pedagogical tool.
 

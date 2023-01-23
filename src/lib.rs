@@ -3,7 +3,7 @@ use sp_core::hexdisplay::HexDisplay;
 use parity_scale_codec::{Decode, Encode};
 use sp_runtime::traits::Extrinsic;
 use websocket_base::message::OwnedMessage;
-use sp_application_crypto::Pair;
+//use sp_application_crypto::Pair;
 
 #[derive(Debug, Encode, Decode, PartialEq, Eq, Clone)]
 pub struct BasicExtrinsic {
@@ -166,13 +166,30 @@ pub fn generate_key_pair(passphrase: String) -> sp_core::sr25519::Pair {
 
 }
 
-pub fn create_extrinsic() -> String {
+pub fn send_extrinsic(hex_ext_str: String) -> String {
 
-    const TEST_KEY: &str = "key for testing purposes";
-	let pair: sp_core::sr25519::Pair = sp_core::Pair::generate_with_phrase(Some(TEST_KEY)).0;
+    //const TEST_KEY: &str = "key for testing purposes";
+	//let pair: sp_core::sr25519::Pair = sp_core::Pair::generate_with_phrase(Some(TEST_KEY)).0;
+    //let amount: u128 = 100;
+	//let call = Call::Mint(pair.clone().clone().public().0, amount);
+    //let extrinsic = BasicExtrinsic { call, signature: None};
 
-    let amount: u128 = 100;
-	let call = Call::Mint(pair.clone().clone().public().0, amount);
+    //let binding = ext.encode();
+    //let hex_extrinsic = HexDisplay::from(&binding);
+
+    //let str_hex_extrinsic = hex_ext.to_string();
+
+    let str = "{\"jsonrpc\":\"2.0\", \"id\":1, \"method\":\"author_submitExtrinsic\", \"params\": [\"".to_owned() + &hex_ext_str + "\"]}";
+    println!("cx {}", &str);
+    let response = call_rpc(str);
+    response
+}
+
+//const ALICE_PUB_KEY: [u8; 32] = ; 
+
+/*pub fn unsigned_mint(user: User, amount: u128) -> String {
+
+	let call = Call::Mint(pub_key, amount);
 
     let extrinsic = BasicExtrinsic { call, signature: None};
 
@@ -185,5 +202,5 @@ pub fn create_extrinsic() -> String {
     println!("cx {}", &str);
     let response = call_rpc(str);
     response
-}
+}*/
 
